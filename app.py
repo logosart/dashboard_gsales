@@ -3,6 +3,11 @@ import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
 import plotly.express as px
+import os 
+
+
+
+
 
 # Planilha
 df = pd.read_csv('vgsales.csv')
@@ -153,4 +158,5 @@ def atualizar_painel(plataformas, generos, anos):
 
 # Rodar servidor
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(host="0.0.0.0", port=port, debug=False)
